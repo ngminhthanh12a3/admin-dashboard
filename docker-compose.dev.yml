@@ -13,6 +13,7 @@ services:
       - PORT=3001
       - CLIENT_URL=http://10.10.10.120:3000
       - BROKER_PORT=3002
+      - MONGO_URL=mongodb://root:example@mongo:3003/mernapp?authSource=admin
     # bind mount
     volumes:
       - ./api_server/:/mern-app/server/

@@ -12,7 +12,6 @@ services:
     environment:
       - MONGO_USERNAME=root
       - MONGO_PASSWORD=example
-      - MONGO_URL=mongodb://root:example@mongo:3003/mernapp?authSource=admin
       - MONGO_SERVICE=mongo
       - BROKER_HOST=broker
     # limit logs
