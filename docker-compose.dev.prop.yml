@@ -7,11 +7,11 @@ services:
       args:
         PORT: ${PORT}
     ports:
-      - "3004:3004"
+      - "3001:3001"
     command: yarn run dev
     environment:
-      - PORT=3004
-      - CLIENT_URL=http://113.161.225.11:3003
+      - PORT=3001
+      - CLIENT_URL=http://113.161.225.11:3000
       - BROKER_PORT=3005
     # bind mount
     volumes:
@@ -27,10 +27,10 @@ services:
       args:
         PORT: ${PORT}
     environment:
-      - PORT=3003
-      - UMI_APP_API_URL=http://113.161.225.11:3004
+      - PORT=3000
+      - UMI_APP_API_URL=http://113.161.225.11:3001
     ports:
-      - "3003:3003"
+      - "3000:3000"
     command: yarn start
     # bind mount
     volumes:
@@ -42,10 +42,10 @@ services:
       args:
         PORT: ${PORT}
     ports:
-      - 3005:3005
+      - 3002:3002
     command: yarn run dev
     environment:
-      - PORT=3005
+      - PORT=3002
     # bind mount
     volumes:
       - ./broker:/mern-app/broker
