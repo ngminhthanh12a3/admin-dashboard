@@ -21,8 +21,8 @@ services:
 
   mongo:
     image: mongo:4.4.6
-    # ports:
-    #   - 3006:3006
+    ports:
+      - 27017:27017
     # command: mongod --port 3006
     
   client:
