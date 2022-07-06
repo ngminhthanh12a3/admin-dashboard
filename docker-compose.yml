@@ -23,9 +23,6 @@ services:
     
 
   mongo:
-    ports:
-      - 3003:3003
-    command: mongod --port 3003
     restart: always
     environment:
       MONGO_INITDB_ROOT_USERNAME: root

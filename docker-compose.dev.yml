@@ -20,6 +20,9 @@ services:
 
   mongo:
     image: mongo:latest
+    ports:
+      - 3003:3003
+    command: mongod --port 3003
 
   client:
     build: 
