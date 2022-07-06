@@ -1,0 +1,11 @@
+/**
+ * @see https://umijs.org/zh-CN/plugins/plugin-access
+ * */
+export default function access(initialState) {
+  const { currentUser } = initialState ?? {};
+  return {
+    canAdmin: currentUser && currentUser.access === 'admin',
+    canDev: currentUser && currentUser.access === 'dev',
+    canDevAdmin: currentUser && (currentUser.access === 'dev' || currentUser.access === 'admin'),
+  };
+}

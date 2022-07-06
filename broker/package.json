@@ -1,0 +1,19 @@
+{
+  "name": "mqtt_broker",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Thanh",
+  "license": "MIT",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "dependencies": {
+    "aedes": "^0.46.3",
+    "mqtt": "^4.3.7",
+    "net": "^1.0.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}

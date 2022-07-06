@@ -1,0 +1,19 @@
+FROM node:16
+
+WORKDIR /mern-app/broker
+
+COPY package.json .
+COPY yarn.lock .
+
+RUN yarn
+RUN yarn add nodemon --dev
+
+# copy all compoent
+COPY . .
+
+# Listen port.
+ARG PORT
+EXPOSE $PORT
+
+# Run CMD.
+CMD ["yarn", "run", "dev"]

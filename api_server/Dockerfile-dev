@@ -1,0 +1,21 @@
+FROM node:16
+
+WORKDIR /mern-app/server
+
+COPY package.json .
+COPY yarn.lock .
+
+# install node_modules
+# RUN npm i -g yarn@latest 
+RUN yarn
+RUN yarn add nodemon --dev
+
+# copy all compoent
+COPY . .
+
+# Listen port.
+ARG PORT
+EXPOSE $PORT
+
+# Run CMD.
+CMD ["yarn", "run", "dev"]

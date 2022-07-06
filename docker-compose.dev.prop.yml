@@ -1,0 +1,52 @@
+version: '3'
+
+services:
+  server:
+    build:
+      dockerfile: Dockerfile-dev
+      args:
+        PORT: ${PORT}
+    ports:
+      - "3004:3004"
+    command: yarn run dev
+    environment:
+      - PORT=3004
+      - CLIENT_URL=http://113.161.225.11:3003
+      - BROKER_PORT=3005
+    # bind mount
+    volumes:
+      - ./api_server:/mern-app/server
+      - /mern-app/server/node_modules
+
+  mongo:
+    image: mongo:4.4.6
+    
+  client:
+    build: 
+      dockerfile: Dockerfile-dev
+      args:
+        PORT: ${PORT}
+    environment:
+      - PORT=3003
+      - UMI_APP_API_URL=http://113.161.225.11:3004
+    ports:
+      - "3003:3003"
+    command: yarn start
+    # bind mount
+    volumes:
+      - ./my_umi_app:/mern-app/client
+      - /mern-app/client/node_modules
+  broker:
+    build:
+      dockerfile: Dockerfile-dev
+      args:
+        PORT: ${PORT}
+    ports:
+      - 3005:3005
+    command: yarn run dev
+    environment:
+      - PORT=3005
+    # bind mount
+    volumes:
+      - ./broker:/mern-app/broker
+      - /mern-app/broker/node_modules 

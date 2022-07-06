@@ -1,0 +1,64 @@
+version: '3'
+
+services:
+  server:
+    image: server
+    build:
+      context: ./api_server
+    restart: always
+    depends_on:
+      - mongo
+      - broker
+    environment:
+      - MONGO_USERNAME=root
+      - MONGO_PASSWORD=example
+      - MONGO_URL=mongodb://root:example@mongo:3003/mernapp?authSource=admin
+      - MONGO_SERVICE=mongo
+      - BROKER_HOST=broker
+    # limit logs
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "3"
+    
+
+  mongo:
+    ports:
+      - 3003:3003
+    command: mongod --port 3003
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+    volumes:
+      # Set mondo db storage voulume name.
+      - mongo-db:/data/db
+    # limit logs
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "3"
+  
+  client:
+    image: client-umi
+    build: 
+      context: ./my_umi_app
+    restart: always
+    # limit logs
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "3"
+  
+  broker:
+    image: broker
+    build:
+      context: ./broker
+    restart: always
+    # limit logs
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "3"
+volumes:
+  mongo-db:

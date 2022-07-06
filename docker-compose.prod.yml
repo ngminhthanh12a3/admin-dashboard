@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  server:
+    build:
+      args:
+        PORT: ${PORT}
+    ports:
+      - "3004:3004"
+    command: yarn start
+    environment:
+      - PORT=3004
+      - CLIENT_URL=http://113.161.225.11:3003
+
+  mongo:
+    image: mongo:4.4.6
+
+
+  client:
+    build:
+      args:
+        PORT: ${PORT}
+    ports:
+      - "3003:3003"
+    command: yarn start
+    environment:
+      - PORT=3003
+      - REACT_APP_API_URL=http://113.161.225.11:3004
