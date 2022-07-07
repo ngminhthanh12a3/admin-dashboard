@@ -8,12 +8,12 @@ services:
         PORT: ${PORT}
     ports:
       - "3001:3001"
-    command: yarn run dev
+    command: yarn run dev 
     environment:
       - PORT=3001
       - CLIENT_URL=http://10.10.10.120:3000
       - BROKER_PORT=3002
-      - MONGO_URL=mongodb://root:example@mongo:3003/mernapp?authSource=admin
+      - MONGO_URL=mongodb://root:example@mongo:3003/mernapp?authSource=admin&directConnection=true
     # bind mount
     volumes:
       - ./api_server/:/mern-app/server/
