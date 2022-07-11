@@ -12,15 +12,7 @@ const TagColorType = {
 };
 const fakeDeviceData = {
   data: [
-    {
-      devID: '1',
-      //   labels: [{ name: 'Updated', color: 'success' }],
-      version: '1.0',
-      created_at: '2020-05-26T09:42:56Z',
-      ota_upload_time: '2020-05-26T10:03:02Z',
-      devicetype: 'ESP32',
-      filetype: 'Local',
-    },
+    
   ],
   page: 1,
   success: true,

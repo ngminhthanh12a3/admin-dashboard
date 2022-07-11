@@ -1,10 +1,18 @@
 import { API_SEND_CUSTOM_BROKER_REQUEST_URL } from '@/constants';
 import { API_Inits, requestToAPI } from '@/handlers';
 import { RedoOutlined } from '@ant-design/icons';
-import { Button, notification } from 'antd';
+import { Button, notification , message as antd_message} from 'antd';
+import { useModel } from 'umi';
 
 export default ({ currentSelectDevice }) => {
+  const { currentDeviceWifiStatus } = useModel('currentSelectDevice');
+  
   const onClick = async () => {
+    if (currentDeviceWifiStatus !== 'ACTIVE') 
+    {
+      antd_message.error('Device is Offline');
+      return;
+    }
     const reset_topic = `devID/${currentSelectDevice}/reset`;
     const {
       type = 'info',
