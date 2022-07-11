@@ -47,7 +47,7 @@ const fileUpload = upload.fields([{ name: "bin-file", maxCount: 1 }]);
 
 var router = express.Router();
 var { otaCTRL, fields_CTRL, upload_ota_bin_CTRL } = require("../controller");
-const { version } = require("os");
+// const { version } = require("os");
 
 // const { OTA_Field } = require("../models");
 router.get("/update", otaCTRL);

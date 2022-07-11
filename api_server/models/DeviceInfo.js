@@ -15,7 +15,7 @@ var deviceInfoSchema = new Schema({
   // voltage1: String,
   // voltage2: String,
   // wifi_status: String,
-  devID: Number,
+  devID: { type: Number, unique: true },
   voltage1: Number,
   voltage2: Number,
   current1: Number,
@@ -26,6 +26,7 @@ var deviceInfoSchema = new Schema({
   version: { type: Number, default: 1.0 },
   ota_type: { type: String, default: "Local" },
   devicetype: { type: String, default: "ESP32" },
+  ota_upload_time: { type: Number, default: "Invalid date" },
 });
 
 const DeviceInfo = mongoose.model("DeviceInfo", deviceInfoSchema);

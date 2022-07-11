@@ -23,7 +23,7 @@ module.exports = (chacha20DecryptValue, devID) => {
     // fix error
     if (chacha20DecryptValue[devID]) {
       // chacha20DecryptValue[devID].wifi_status = "DEACTIVE";
-      clearBitFromFormatData(chacha20DecryptValue[devID], 0x1, 1);
+      clearBitFromFormatData(chacha20DecryptValue[devID], 0x1, 1, "status");
 
       const emitJSON = {};
       emitJSON[devID] = chacha20DecryptValue[devID];

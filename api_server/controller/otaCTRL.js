@@ -25,7 +25,12 @@ module.exports = async (req, res, next) => {
   if (OTA_ENABLE && differenceFOTAVersion && OTA_CURRENT_FIELDS_NAME) {
     await DeviceInfo.findOneAndUpdate(
       { devID },
-      { version: OTA_CURRENT_VERSION, ota_type: filetype, devicetype }
+      {
+        version: OTA_CURRENT_VERSION,
+        ota_type: filetype,
+        devicetype,
+        ota_upload_time: Date.now(),
+      }
     );
     res.download(binPATH);
   } else {

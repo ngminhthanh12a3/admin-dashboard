@@ -13,7 +13,7 @@ module.exports = async (req, res, next) => {
   const OTA_LATES_UPDATE = nowTime.getTime();
 
   const updateDBData = { OTA_CURRENT_VERSION, OTA_LATES_UPDATE };
-  console.log(file_name);
+
   //   update OTA field
   await storeToDB(
     OTA_Field,

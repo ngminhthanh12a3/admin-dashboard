@@ -65,8 +65,10 @@ const columns = [
       return a.ota_upload_time - b.ota_upload_time;
     },
     render: (_, record) => {
-      const dateTime = moment(record.ota_upload_time).format('YYYY-MM-DD HH:mm:ss');
-      const dateTimeFromNow = moment(record.ota_upload_time).fromNow();
+      const {ota_upload_time = "Invalid date"} = record
+
+      const dateTime = moment(ota_upload_time ).format('YYYY-MM-DD HH:mm:ss');
+      const dateTimeFromNow = moment(ota_upload_time).fromNow();
       return (
         <Tooltip title={dateTime}>
           <span>{dateTimeFromNow}</span>
