@@ -32,7 +32,9 @@ module.exports = (chacha20DecryptValue, devID) => {
         { devID, ...chacha20DecryptValue[devID] },
         { devID }
       );
+
       emitToClient(emitJSON, "encryptDT");
+
       const wifiStatus = getBitFromFormatData(
         chacha20DecryptValue[devID],
         0x1,
@@ -41,6 +43,7 @@ module.exports = (chacha20DecryptValue, devID) => {
       )
         ? "ACTIVE"
         : "DEACTIVE";
+
       emitToClient(
         {
           type: "info",

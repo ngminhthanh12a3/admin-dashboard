@@ -26,7 +26,7 @@ var deviceInfoSchema = new Schema({
   version: { type: Number, default: 1.0 },
   ota_type: { type: String, default: "Local" },
   devicetype: { type: String, default: "ESP32" },
-  ota_upload_time: { type: Number, default: "Invalid date" },
+  ota_upload_time: { type: Number, default: -1 },
 });
 
 const DeviceInfo = mongoose.model("DeviceInfo", deviceInfoSchema);
