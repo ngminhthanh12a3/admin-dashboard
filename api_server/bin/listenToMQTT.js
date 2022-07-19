@@ -18,7 +18,7 @@ module.exports.client = client;
 
 const topic = "esp/publish";
 
-module.exports.listenToMQTT = () => {
+const start = () => {
   client.on("connect", () => {
     console.log("MQTT Connected");
     client.subscribe([topic], () => {
@@ -52,4 +52,12 @@ module.exports.listenToMQTT = () => {
     // emit to clients
     emitToClient(emitJSON, "encryptDT"); //
   });
+};
+module.exports.listenToMQTT = async () => {
+  try {
+    await start();
+  } catch (err) {
+    console.error("Restart MQTT", err);
+    await start();
+  }
 };

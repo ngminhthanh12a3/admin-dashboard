@@ -14,6 +14,8 @@ services:
       - CLIENT_URL=http://10.10.10.120:3000
       - BROKER_PORT=3002
       - MONGO_URL=mongodb://root:example@mongo:3003/mernapp?authSource=admin&directConnection=true
+      # - MONGO_CLIENT_URL=mongodb://root:example@mongo:3003
+      - MONGO_CLIENT_URL=mongodb://root:example@mongo:3003/?retryWrites=true&w=majority
     # bind mount
     volumes:
       - ./api_server/:/mern-app/server/

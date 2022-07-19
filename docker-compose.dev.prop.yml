@@ -1,4 +1,4 @@
-version: '3'
+version: "3"
 
 services:
   server:
@@ -14,6 +14,7 @@ services:
       - CLIENT_URL=http://113.161.225.11:3003
       - BROKER_PORT=3005
       - MONGO_URL=mongodb://root:example@mongo:27017/mernapp?authSource=admin
+      - MONGO_CLIENT_URL=mongodb://root:example@mongo:27017
     # bind mount
     volumes:
       - ./api_server:/mern-app/server
@@ -24,9 +25,9 @@ services:
     ports:
       - 27017:27017
     # command: mongod --port 3006
-    
+
   client:
-    build: 
+    build:
       dockerfile: Dockerfile-dev
       args:
         PORT: ${PORT}
@@ -53,4 +54,4 @@ services:
     # bind mount
     volumes:
       - ./broker:/mern-app/broker
-      - /mern-app/broker/node_modules 
+      - /mern-app/broker/node_modules
