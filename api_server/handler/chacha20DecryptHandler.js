@@ -13,7 +13,12 @@ const blockNumber = new Uint8Array([
 
 // module export: decrypt chaCha20 function.
 module.exports = (payload, json) => {
-  console.log("Payload: ", payload);
+  // console.log("Payload: ", payload);
+  console.log("Buffer length: ", payload.length);
+  for (let index = 0; index < payload.length; index++) {
+    // process.stdout.write(item + " ");
+    process.stdout.write(payload[index].toString(16) + " ");
+  }
 
   const message = new JSChaCha20(key, nonce, blockNumber).decrypt(payload);
 
