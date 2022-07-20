@@ -14,6 +14,8 @@ const blockNumber = new Uint8Array([
 // module export: decrypt chaCha20 function.
 module.exports = (payload, json) => {
   const message = new JSChaCha20(key, nonce, blockNumber).decrypt(payload);
+  console.log("Message: ", message);
+
   var string = new TextDecoder().decode(message);
 
   if (json) return JSON.parse(string);
