@@ -15,11 +15,12 @@ const blockNumber = new Uint8Array([
 module.exports = (payload, json) => {
   // console.log("Payload: ", payload);
   console.log("Buffer length: ", payload.length);
+  process.stdout.write("Buffer: [");
   for (let index = 0; index < payload.length; index++) {
     // process.stdout.write(item + " ");
     process.stdout.write(payload[index].toString(16) + " ");
   }
-  console.log("");
+  console.log("]");
 
   const message = new JSChaCha20(key, nonce, blockNumber).decrypt(payload);
 
