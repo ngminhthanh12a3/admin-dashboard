@@ -41,7 +41,7 @@ const start = () => {
   client.on("message", (topic, payload) => {
     const decryptJSON = chacha20DecryptHandler(payload, "1");
     handleDecryptValue(decryptJSON);
-
+    console.log(decryptJSON);
     const { devID, ...props } = decryptJSON;
 
     handleDeviceInfoAnalysis(devID, props);
